@@ -1,0 +1,56 @@
+
+Keeping few files synchronized with GIT.
+=========================================
+
+What I did to get the vim related files on my differen home directories across diferen machines to be synchronized.
+
+First, on one pc, I set up a new empty git repo:
+
+    C:\users\mattos> git init
+
+then I added just the files related to vim that I want this repository to care about.
+
+    C:\users\mattos> git add _vimrc
+    C:\users\mattos> git add vim-configurations-readme.txt
+    C:\users\mattos> git add vimfiles
+
+then commited the newly added files:
+
+    C:\users\mattos> git commit -m "<message>"
+
+linked my local repo to the remote one:
+
+    C:\users\mattos> git remote add origin git@github.com:mmmattos/vim-configurations.git
+
+And finally pushed the local repo into the remote.
+
+    C:\users\mattos> git push origin master
+
+Now, on the second pc, I could not use close since I wanted to get just those files updated in this pc´s home directory.
+To accomplish that I initialized a git repo, the very same way :
+
+    C:\users\mmmattos> git init
+
+Associated the same remote repository with the local one:
+
+    C:\users\mmmattos> git remote add origin  git@github.com:mmmattos/vim-configurations.git
+
+Fetched and pulled the files from the repository:
+
+        C:\users\mmmattos> git fetch
+        C:\users\mmmattos> git pull origin master
+
+Files were downloaded and put in the pc home directory.
+
+To test the setup, I modified _vimrc applying some minor change.
+Once saved, I had to add the change to the local repo:
+    
+        C:\users\mmmattos> git add _vimrc
+
+And finally pushed the change into the remote repository
+
+        C:\users\mmmattos> git push origin master.
+
+Github revealed the file was updated and the diff on the revision revealed the minor change.
+
+That´s all folks.
