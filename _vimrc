@@ -28,7 +28,7 @@ set expandtab
 
 "Setting my window preferences
 set lines=51
-set columns=120
+set columns=110
 "set guifont=Monaco
 set guifont=Consolas:h12:cANSI
 set directory=c:\\tmp
