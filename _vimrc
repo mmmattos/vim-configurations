@@ -1,3 +1,9 @@
+filetype off
+call pathogen#runtime_append_all_bundles()
+call pathogen#helptags()
+syntax on
+filetype plugin indent on
+
 set nocompatible
 source $VIMRUNTIME/vimrc_example.vim
 source $VIMRUNTIME/mswin.vim
@@ -7,11 +13,6 @@ set ignorecase
 set nowrap
 set beautify
 "set term=builtin_ansi
-
-call pathogen#helptags()
-call pathogen#runtime_append_all_bundles()
-
-syntax on
 
 "Setting up tabs
 set tabstop=4
@@ -24,18 +25,16 @@ set autoindent
 set smartindent
 set expandtab
 
-
-
 "Setting my window preferences
 set lines=51
-set columns=110
+set columns=120
 "set guifont=Monaco
 set guifont=Consolas:h12:cANSI
 set directory=c:\\tmp
 winpos 0 0
 
 "Colorscheme
-colorscheme torte   "blackBoardBlack
+colorscheme blackBoardBlack
 
 
 "Indent on
