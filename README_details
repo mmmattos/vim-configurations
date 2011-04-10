@@ -1,6 +1,6 @@
 
-Keeping few files synchronized with GIT.
-=========================================
+Keeping few files synchronized with GIT (Windows environment).
+=============================================================
 
 What I did to get the vim related files on my differen home directories across diferen machines to be synchronized.
 
@@ -52,5 +52,18 @@ And finally pushed the change into the remote repository
         C:\users\mmmattos> git push origin master.
 
 Github revealed the file was updated and the diff on the revision revealed the minor change.
+
+Managing vim plugins with Pathogen 
+===================================
+
+Put pathogen.vim in the vimfiles/autoload
+
+Check out each vim plugin to its own directory under vimfiles/bundle, for instance:
+
+        C:\Users\mmmattos>git submodule add git://github.com/scrooloose/nerdtree.git 
+                            vimfiles\bundle\nerdtree
+
+
+
 
 That´s all folks.
