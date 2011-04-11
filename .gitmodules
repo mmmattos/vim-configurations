@@ -1,6 +1,9 @@
-[submodule "vimfiles\\bundle\\fugitive"]
-	path = vimfiles\\bundle\\fugitive
+[submodule "vimfiles/bundle/fugitive"]
+	path = vimfiles/bundle/fugitive
 	url = http://github.com/tpope/vim-fugitive.git
-[submodule "vimfiles\\bundle\\nerdtree"]
-	path = vimfiles\\bundle\\nerdtree
-	url = git://github.com/scrooloose/nerdtree.git
+[submodule "vimfiles/bundle/nerdtree"]
+	path = vimfiles/bundle/nerdtree
+	url = http://github.com/scrooloose/nerdtree.git
+[submodule "vimfiles/not_installed/pathogen"]
+	path = vimfiles/not_installed/pathogen
+	url = http://github.com/tpope/vim-pathogen.git
