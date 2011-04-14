@@ -16,3 +16,27 @@
 [submodule "vimfiles/bundle/snipmate"]
 	path = vimfiles/bundle/snipmate
 	url = http://github.com/msanders/snipmate.vim.git
+[submodule "vimfiles/bundle/rails"]
+	path = vimfiles/bundle/rails
+	url = http://github.com/tpope/vim-rails.git
+[submodule "vimfiles/bundle/git"]
+	path = vimfiles/bundle/git
+	url = http://github.com/tpope/vim-git.git
+[submodule "vimfiles/bundle/repeat"]
+	path = vimfiles/bundle/repeat
+	url = http://github.com/tpope/vim-repeat.git
+[submodule "vimfiles/bundle/surround"]
+	path = vimfiles/bundle/surround
+	url = http://github.com/tpope/vim-surround.git
+[submodule "vimfiles/bundle/vividchalk.colorscheme"]
+	path = vimfiles/bundle/vividchalk.colorscheme
+	url = http://github.com/tpope/vim-vividchalk.git
+[submodule "vimfiles/bundle/align"]
+	path = vimfiles/bundle/align
+	url = http://github.com/tsaleh/vim-align.git
+[submodule "vimfiles/bundle/supertab"]
+	path = vimfiles/bundle/supertab
+	url = http://github.com/ervandew/supertab.git
+[submodule "vimfiles/bundle/tcomment"]
+	path = vimfiles/bundle/tcomment
+	url = http://github.com/tomtom/tcomment_vim.git
