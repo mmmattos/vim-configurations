@@ -4,8 +4,8 @@
 [submodule "vimfiles/bundle/nerdtree"]
 	path = vimfiles/bundle/nerdtree
 	url = http://github.com/scrooloose/nerdtree.git
-[submodule "vimfiles/not_installed/pathogen"]
-	path = vimfiles/not_installed/pathogen
+[submodule "vimfiles/downloaded/pathogen"]
+	path = vimfiles/downloaded/pathogen
 	url = http://github.com/tpope/vim-pathogen.git
 [submodule "vimfiles/bundle/cucumber"]
 	path = vimfiles/bundle/cucumber
