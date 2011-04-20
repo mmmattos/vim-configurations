@@ -30,7 +30,8 @@ set lines=51
 set columns=120
 "set guifont=Monaco
 set guifont=Consolas:h12:cANSI
-set directory=c:\\tmp
+set backupdir=C:\\Users\\mattos\\_vimbackups,C:\\tmp
+set directory=C:\\Users\\mattos\\_vimbackups,C:\\tmp
 winpos 0 0
 
 "Colorscheme
