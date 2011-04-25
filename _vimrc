@@ -11,7 +11,7 @@ behave mswin
 set number
 set ignorecase
 set nowrap
-set beautify
+"set beautify
 "set term=builtin_ansi
 
 "Setting up tabs
@@ -30,8 +30,8 @@ set lines=51
 set columns=120
 "set guifont=Monaco
 set guifont=Consolas:h12:cANSI
-set backupdir=C:\\Users\\mattos\\_vimbackups,C:\\tmp
-set directory=C:\\Users\\mattos\\_vimbackups,C:\\tmp
+set backupdir=$HOME\\_vimbackups,C:\\tmp
+set directory=$HOME\\_vimbackups,C:\\tmp
 winpos 0 0
 
 "Colorscheme
@@ -70,7 +70,7 @@ autocmd FileType python match BadWhitespace /\s\+$/
 "Pylint
 autocmd FileType python compiler pylint
 "To disable calling Pylint every time a buffer is saved put into .vimrc file
-let g:pylint_onwrite = 0
+"let g:pylint_onwrite = 0
 "Displaying code rate calculated by Pylint can be avoided by setting
 "let g:pylint_show_rate = 0
 "Openning of QuickFix window can be disabled with
@@ -156,7 +156,7 @@ au BufRead,BufNewFile *.vala            setfiletype vala
 au BufRead,BufNewFile *.vapi            setfiletype vala
 
 " Disable valadoc syntax highlight
-"let vala_ignore_valadoc = 1
+let vala_ignore_valadoc = 1
 
 " Enable comment strings
 let vala_comment_strings = 1
@@ -189,13 +189,12 @@ autocmd BufRead,BufNewFile *.md setfiletype markdown
 
 "Cucumber syntax
 autocmd BufRead,BufNewFile *.feature setfiletype cucumber
-autocmd BufRead,BufNewFile *.feature setfiletype cucumber
 
 "Change dir to the one of the current file
 autocmd BufEnter * if expand("%:p:h") !~ '^/tmp' | lcd %:p:h | endif
 
-"Make NERDTree to start from my HOME dir
-au VimEnter * NERDTreeToggle ~/
+"Make NERDTree to start from my HOME dir or the file´s dir.
+autocmd VimEnter * NERDTreeToggle
 
 set diffexpr=MyDiff()
 function MyDiff()
