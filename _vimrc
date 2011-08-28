@@ -1,4 +1,9 @@
 filetype off
+
+if ! has('win16') || has('win32') || has('win64') || has('win95')
+    let &runtimepath.=',~/vimfiles'
+endif
+
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 syntax on
@@ -6,8 +11,12 @@ filetype plugin indent on
 
 set nocompatible
 source $VIMRUNTIME/vimrc_example.vim
-source $VIMRUNTIME/mswin.vim
-behave mswin
+
+if has('win16') || has('win32') || has('win64') || has('win95')
+    source $VIMRUNTIME/mswin.vim
+    behave mswin
+endif
+
 set number
 set ignorecase
 set nowrap
@@ -26,100 +35,120 @@ set smartindent
 set expandtab
 
 "Setting my window preferences
-set lines=51
-set columns=120
+"set lines=51
+"set columns=120
 "set guifont=Monaco
-set guifont=Consolas:h12:cANSI
-set backupdir=$HOME\\_vimbackups,C:\\tmp
-set directory=$HOME\\_vimbackups,C:\\tmp
+if has("gui_running")
+  if has('win16') || has('win32') || has('win64') || has('win95')
+    set guifont=consolas:h12:cansi
+  elseif has("gui_gtk2")
+        set guifont=DejaVu\ Sans\ Mono\ 12
+  elseif has("gui_photon")
+    set guifont=DejaVu\ Sans\ Mono:s12
+  elseif has("gui_kde")
+    set guifont=Courier\ New/11/-1/5/50/0/0/0/1/0
+  elseif has("x11")
+    set guifont=-*-courier-medium-r-normal-*-*-180-*-*-m-*-*
+  else
+    set guifont=Courier_New:h11:cDEFAULT
+  endif
+endif
+
+if has('win16') || has('win32') || has('win64') || has('win95')
+    set backupdir=$HOME\\_vimbackups
+    set directory=$HOME\\_vimbackups
+else
+    set backupdir=$HOME/_vimbackups
+    set directory=$HOME/_vimbackups
+endif
+
 winpos 0 0
 
-"Colorscheme
-colorscheme vividchalk "blackBoardBlack
+"colorscheme
+colorscheme vividchalk "blackboardblack
 
-
-"Indent on
+"indent on
 filetype indent on
 filetype plugin on
 
-"Added support for other file types 
-autocmd BufNewFile,BufRead *.json set ft=javascript
+"added support for other file types 
+autocmd bufnewfile,bufread *.json set ft=javascript
 
-"Change file type for ruby
-autocmd FileType ruby set ft=ruby.ruby-rails.ruby-rspec.ruby-rails-rjs.ruby-shoulda
+"change file type for ruby
+autocmd filetype ruby set ft=ruby.ruby-rails.ruby-rspec.ruby-rails-rjs.ruby-shoulda
 
-"Change tabs to 2 space on ruby files
-autocmd FileType ruby set tabstop=2
-autocmd FileType ruby set shiftwidth=2
-autocmd FileType ruby set softtabstop=2
+"change tabs to 2 space on ruby files
+autocmd filetype ruby set tabstop=2
+autocmd filetype ruby set shiftwidth=2
+autocmd filetype ruby set softtabstop=2
 
-"Set noexpandtab to Makefiles, to use <tab> char instead of spaces
-autocmd FileType make setlocal noexpandtab
+"set noexpandtab to makefiles, to use <tab> char instead of spaces
+autocmd filetype make setlocal noexpandtab
 
-"Set smartindent for Python files
-autocmd FileType python set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
+"set smartindent for python files
+autocmd filetype python set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
 
-"Map to execute Python files
-autocmd FileType python map <Leader>p :!python % <CR>
+"map to execute python files
+autocmd filetype python map <leader>p :!python % <cr>
 
-"Settings for mark BadWhitespaces in Python files
-autocmd FileType python highlight BadWhitespace ctermbg=red guibg=red
-autocmd FileType python match BadWhitespace /^\t\+/
-autocmd FileType python match BadWhitespace /\s\+$/
+"settings for mark badwhitespaces in python files
+autocmd filetype python highlight badwhitespace ctermbg=red guibg=red
+autocmd filetype python match badwhitespace /^\t\+/
+autocmd filetype python match badwhitespace /\s\+$/
 
-"Pylint
-autocmd FileType python compiler pylint
-"To disable calling Pylint every time a buffer is saved put into .vimrc file
+"pylint
+autocmd filetype python compiler pylint
+"to disable calling pylint every time a buffer is saved put into .vimrc file
 "let g:pylint_onwrite = 0
-"Displaying code rate calculated by Pylint can be avoided by setting
+"displaying code rate calculated by pylint can be avoided by setting
 "let g:pylint_show_rate = 0
-"Openning of QuickFix window can be disabled with
+"openning of quickfix window can be disabled with
 "let g:pylint_cwindow = 0
-"Of course, standard :make command can be used as in case
+"of course, standard :make command can be used as in case
 
-"Using Django and Python file type instead of just Python
-autocmd FileType python set ft=python.django
+"using django and python file type instead of just python
+autocmd filetype python set ft=python.django
 
-"Setting file type to htmldjango and html
-autocmd FileType htmldjango set ft=htmljinja.htmldjango.html
-autocmd FileType html set ft=htmljinja.htmldjango.html
-autocmd FileType xhtml set ft=htmljinja.htmldjango.html
+"setting file type to htmldjango and html
+autocmd filetype htmldjango set ft=htmljinja.htmldjango.html
+autocmd filetype html set ft=htmljinja.htmldjango.html
+autocmd filetype xhtml set ft=htmljinja.htmldjango.html
 
-"Setting syntax to htmldjango and html
-autocmd FileType htmldjango set syntax=htmljinja
-autocmd FileType html set syntax=htmljinja
-autocmd FileType xhtml set syntax=htmljinja
+"setting syntax to htmldjango and html
+autocmd filetype htmldjango set syntax=htmljinja
+autocmd filetype html set syntax=htmljinja
+autocmd filetype xhtml set syntax=htmljinja
 
-"Setting file type to PHP and HTML (snippets)
-autocmd FileType php set ft=php.html
+"setting file type to php and html (snippets)
+autocmd filetype php set ft=php.html
 
-"Setting file type to eruby and html (snippets)
-autocmd FileType eruby set ft=eruby.eruby-rails.html
+"setting file type to eruby and html (snippets)
+autocmd filetype eruby set ft=eruby.eruby-rails.html
 
-nmap <silent> <c-p> :NERDTreeToggle<CR>
-nmap <silent> <c-a> :NERDTree<CR>
-nmap ,t :tabnew<CR>
-nmap <C-Tab> gt
-nmap <C-S-Tab> gT
-nmap <C-t> :CommandT<CR>
+nmap <silent> <c-p> :nerdtreetoggle<cr>
+nmap <silent> <c-a> :nerdtree<cr>
+nmap ,t :tabnew<cr>
+nmap <c-tab> gt
+nmap <c-s-tab> gt
+nmap <c-t> :commandt<cr>
 
-"Related files, useful in Django
-"Open files related to a Django project or app, as views.py, models.py or settings.py
+"Related files, useful in django
+"open files related to a django project or app, as views.py, models.py or settings.py
 let g:last_relative_dir = ''
-nnoremap \1 :call RelatedFile ("models.py")<cr>
-nnoremap \2 :call RelatedFile ("views.py")<cr>
-nnoremap \3 :call RelatedFile ("urls.py")<cr>
-nnoremap \4 :call RelatedFile ("admin.py")<cr>
-nnoremap \5 :call RelatedFile ("tests.py")<cr>
-nnoremap \6 :call RelatedFile ( "templates/" )<cr>
-nnoremap \7 :call RelatedFile ( "templatetags/" )<cr>
-nnoremap \8 :call RelatedFile ( "management/" )<cr>
+nnoremap \1 :call relatedfile ("models.py")<cr>
+nnoremap \2 :call relatedfile ("views.py")<cr>
+nnoremap \3 :call relatedfile ("urls.py")<cr>
+nnoremap \4 :call relatedfile ("admin.py")<cr>
+nnoremap \5 :call relatedfile ("tests.py")<cr>
+nnoremap \6 :call relatedfile ( "templates/" )<cr>
+nnoremap \7 :call relatedfile ( "templatetags/" )<cr>
+nnoremap \8 :call relatedfile ( "management/" )<cr>
 nnoremap \9 :e urls.py<cr>
 nnoremap \0 :e settings.py<cr>
 
-"Function used to open RelatedFile
-fun! RelatedFile(file)
-    "This is to check that the directory looks djangoish
+"function used to open relatedfile
+fun! Relatedfile(file)
+    "this is to check that the directory looks djangoish
     if filereadable(expand("%:h"). '/models.py') || isdirectory(expand("%:h") . "/templatetags/")
         exec "edit %:h/" . a:file
         let g:last_relative_dir = expand("%:h") . '/'
