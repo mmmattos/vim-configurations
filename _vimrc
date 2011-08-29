@@ -40,7 +40,7 @@ set expandtab
 "set guifont=Monaco
 if has("gui_running")
   if has('win16') || has('win32') || has('win64') || has('win95')
-    set guifont=consolas:h12:cansi
+    set guifont=Consolas:h12:cANSI
   elseif has("gui_gtk2")
         set guifont=DejaVu\ Sans\ Mono\ 12
   elseif has("gui_photon")
